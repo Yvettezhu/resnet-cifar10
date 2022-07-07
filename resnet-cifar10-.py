@@ -29,7 +29,7 @@ test_transform = transforms.Compose(
     ]
     )
 
-batch_size = 400
+batch_size = 500
 
 trainset = torchvision.datasets.CIFAR10(root='./data', train=True, transform=train_transform,
                                         download=False)
@@ -117,14 +117,7 @@ class ResNet(nn.Module):
         return out
 
 model = ResNet().to(device)
-def plot_grad_flow(named_parameters = model.conv.weight):
-    ave_grads = []
-    layers = []
-    ave_grads.append(named_parameters.abs().mean())
-    print(ResidualBlock.weight)
 
-
-# Loss and optimizer
 num_epochs = 50
 learning_rate = 0.01
 criterion = nn.CrossEntropyLoss()
